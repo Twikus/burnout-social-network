@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-username/burnout/actions">
-    <img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/your-username/burnout/ci.yml?branch=main&label=build" />
+  <a href="https://github.com/Twikus/burnout-social-network/actions">
+    <img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/Twikus/burnout-social-network/ci.yml?branch=main&label=build" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-green.svg" />

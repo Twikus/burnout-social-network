@@ -47,9 +47,9 @@ Whether you're into café racers, sport bikes, customs, or off-road trails, **Bu
 | Layer             | Technology              |
 |------------------|-------------------------|
 | Framework        | Laravel                 |
-| Frontend         | Livewire + Tailwind CSS |
+| Frontend         | Inertia(VueJS3) + TWCSS |
 | Real-time Engine | Pusher (WebSockets)     |
-| Database         | PostgreSQL              |
+| Database         | MySQL              |
 | Package Managers | Composer, NPM           |
 
 ---

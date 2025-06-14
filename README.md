@@ -81,11 +81,11 @@ npm install && npm run dev
 cp .env.example .env
 php artisan key:generate
 
-# Configure DB (PostgreSQL) & Pusher in .env
+# Configure DB & Pusher in .env
 # Example:
-# DB_CONNECTION=pgsql
+# DB_CONNECTION=mysql
 # DB_HOST=127.0.0.1
-# DB_PORT=5432
+# DB_PORT=3306
 # DB_DATABASE=burnout
 # DB_USERNAME=your_user
 # DB_PASSWORD=your_password

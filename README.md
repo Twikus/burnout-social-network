@@ -44,12 +44,12 @@ Whether you're into café racers, sport bikes, customs, or off-road trails, **Bu
 
 ## 🛠️ Tech Stack
 
-| Layer             | Technology              |
+| Layer            | Technology              |
 |------------------|-------------------------|
 | Framework        | Laravel                 |
 | Frontend         | Livewire + Tailwind CSS |
 | Real-time Engine | Pusher (WebSockets)     |
-| Database         | PostgreSQL              |
+| Database         | MySQL.                  |
 | Package Managers | Composer, NPM           |
 
 ---
@@ -61,14 +61,14 @@ Whether you're into café racers, sport bikes, customs, or off-road trails, **Bu
 - PHP ≥ 8.2
 - Composer
 - Node.js ≥ 18
-- PostgreSQL
+- MySQL
 - Pusher credentials
 
 ### ⚙️ Setup
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/burnout.git
+git clone https://github.com/Twikus/burnout-social-network.git
 cd burnout
 
 # Install backend dependencies
@@ -79,22 +79,31 @@ npm install && npm run dev
 
 # Copy and configure .env file
 cp .env.example .env
-php artisan key:generate
 
-# Configure DB & Pusher in .env
+# Configure DB (MySQL) & Pusher in .env
 # Example:
-# DB_CONNECTION=mysql
+# DB_CONNECTION=pgsql
 # DB_HOST=127.0.0.1
-# DB_PORT=3306
+# DB_PORT=5432
 # DB_DATABASE=burnout
 # DB_USERNAME=your_user
 # DB_PASSWORD=your_password
 
-# Run migrations
-php artisan migrate
+# Start Docker
+./vendor/bin/sail up -d
 
-# Start the server
-php artisan serve
+# Generate AppKey
+./vendor/bin/sail artisan key:generate
+
+# Run migrations
+./vendor/bin/sail artisan migrate
+
+# Npm installation
+npm install
+
+# Start vite server
+npm run dev
+
 ```
 
 ---
@@ -105,12 +114,11 @@ Burnout includes plans for:
 
 - ✅ Unit Tests (PHPUnit)
 - ✅ Integration Tests
-- ✅ Livewire Component Tests
 
 To run all tests:
 
 ```bash
-php artisan test
+./vendor/bin/sail artisan test
 ```
 
 ---
@@ -126,7 +134,7 @@ php artisan test
 GitHub Actions CI pipeline will be available in `.github/workflows/ci.yml`.
 
 Badge reflects the status of the main branch builds:  
-![CI](https://img.shields.io/github/actions/workflow/status/your-username/burnout/ci.yml?branch=main&label=build)
+![CI](https://img.shields.io/github/actions/workflow/status/Twikus/burnout-social-network/ci.yml?branch=main&label=build)
 
 ---
 

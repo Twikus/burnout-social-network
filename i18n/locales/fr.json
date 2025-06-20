@@ -1,0 +1,10 @@
+{
+    "auth": {
+        "login": "Se connecter",
+        "register": "Nous rejoindre"
+    },
+    "home": {
+        "title": "Le réseau des passionnés de moto 🔥",
+        "description": "Simple : juste des moteurs qui hurlent, de la gomme brûlée et de la bécane."
+    }
+}

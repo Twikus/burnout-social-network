@@ -5,6 +5,20 @@
     },
     "home": {
         "title": "The Social Network for Motorcycle Enthusiasts",
-        "description": "Simple: just purring engines, burning rubber and motorcycle."
+        "description": "Simple: just purring engines, burning rubber and motorcycle.",
+
+        "form": {
+            "email": "Email address",
+            "password": "Password",
+            "submit": "Log in",
+            "register": "Sign up",
+            "forgot-password": "Forgot password?"
+        },
+
+        "footer": {
+            "all-rights": "All rights reserved",
+            "terms": "Terms",
+            "privacy": "Privacy"
+        }
     }
 }

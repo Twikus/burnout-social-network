@@ -1,0 +1,32 @@
+{
+    "auth": {
+        "login": "Log in",
+        "register": "Join us"
+    },
+    "home": {
+        "title": "The Social Network for Motorcycle Enthusiasts",
+        "description": "Simple: just purring engines, burning rubber and motorcycle.",
+
+        "form": {
+            "email": "Email address",
+            "password": "Password",
+            "submit": "Log in",
+            "register": "Sign up",
+            "signup": "Sign up",
+            "forgot-password": "Forgot password?",
+            "need-account": "You don't have an account?",
+            "or": "or",
+
+            "auth": {
+                "failed": "These credentials do not match our records.",
+                "throttle": "Too many login attempts. Please try again in :seconds seconds."
+            }
+        },
+
+        "footer": {
+            "all-rights": "All rights reserved",
+            "terms": "Terms",
+            "privacy": "Privacy"
+        }
+    }
+}

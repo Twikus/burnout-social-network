@@ -1,0 +1,32 @@
+{
+    "auth": {
+        "login": "Se connecter",
+        "register": "Nous rejoindre"
+    },
+    "home": {
+        "title": "Le réseau des passionnés de moto 🔥",
+        "description": "Simple : juste des moteurs qui hurlent, de la gomme brûlée et de la bécane.",
+
+        "form": {
+            "email": "Adresse e-mail",
+            "password": "Mot de passe",
+            "submit": "Se connecter",
+            "register": "S'inscrire",
+            "signup": "Inscrivez-vous",
+            "forgot-password": "Mot de passe oublié ?",
+            "need-account": "Vous n'avez pas de compte ?",
+            "or": "ou",
+
+            "auth": {
+                "failed": "Identifiants incorrects",
+                "throttle": "Trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes."
+            }
+        },
+
+        "footer": {
+            "all-rights": "Tous droits réservés",
+            "terms": "Conditions d'utilisation",
+            "privacy": "Politique de confidentialité"
+        }
+    }
+}

@@ -35,6 +35,7 @@ class GoogleController extends Controller
                 'name' => $googleUser->getName(),
                 'email' => $googleUser->getEmail(),
                 'google_id' => $googleUser->getId(),
+                'email_verified_at' => now(),
                 'password' => bcrypt(Str::random(16)), // Random password for OAuth users
             ]);
         }

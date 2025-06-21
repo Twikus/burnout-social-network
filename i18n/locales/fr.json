@@ -12,7 +12,9 @@
             "password": "Mot de passe",
             "submit": "Se connecter",
             "register": "S'inscrire",
+            "signup": "Inscrivez-vous",
             "forgot-password": "Mot de passe oublié ?",
+            "need-account": "Vous n'avez pas de compte ?",
             "or": "ou",
 
             "auth": {

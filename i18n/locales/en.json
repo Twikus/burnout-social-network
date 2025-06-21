@@ -12,7 +12,9 @@
             "password": "Password",
             "submit": "Log in",
             "register": "Sign up",
+            "signup": "Sign up",
             "forgot-password": "Forgot password?",
+            "need-account": "You don't have an account?",
             "or": "or",
 
             "auth": {

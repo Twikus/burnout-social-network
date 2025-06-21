@@ -96,7 +96,7 @@ const submit = () => {
                     <!-- login form -->
                     <form
                         @submit.prevent="submit"
-                        class="flex flex-col w-full items-center px-10"
+                        class="flex flex-col items-center w-full px-10"
                     >
                         <label for="email-form" class="relative w-full mt-10">
                             <small
@@ -153,23 +153,33 @@ const submit = () => {
                             type="submit"
                             class="mt-8 w-full bg-[#ED4220] text-white py-2 flex justify-center items-center rounded-sm active:bg-[#ff5d27] transition-colors duration-200"
                         >
-                            <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin mr-4" />
-                            <span>{{ t('home.form.submit') }}</span>
+                            <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
+                            <span v-else>{{ t('home.form.submit') }}</span>
                         </button>
+                        <!-- Forgotten password -->
+                        <Link :href="route('password.request')" class="text-white text-xs mt-2 ml hover:underline">{{ t('home.form.forgot-password') }}</Link>
+
                     </form>
 
-                    <div class="flex items-center justify-center my-10">
-                        <span class="w-30 border border-white"></span>
+                    <div class="flex items-center justify-center my-10 px-10">
+                        <span class="w-full border border-white opacity-50"></span>
                         <p class="text-center text-sm text-white mx-4" >
                             {{ t('home.form.or').toUpperCase() }}
                         </p>
-                        <span class="w-30 border border-white"></span>
+                        <span class="w-full border border-white opacity-50"></span>
                     </div>
 
                     <div>
                         <a :href="route('auth.google.redirect')" class="flex items-center justify-center mt-4">
                             <GoogleAuth class="w-full" />
                         </a>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center mt-6">
+                        <p class="text-white">
+                            {{ t('home.form.need-account') }}
+                        </p>
+                        <Link :href="route('register')" class="text-[#ED4220] hover:underline">{{ t('home.form.signup') }}</Link>
                     </div>
 
                 </div>

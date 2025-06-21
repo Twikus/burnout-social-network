@@ -5,7 +5,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('LandingPage');
-})->name('home');
+})->name('lp');
 
 Route::get('home', function () {
     return Inertia::render('Home');

@@ -13,6 +13,7 @@
             "submit": "Se connecter",
             "register": "S'inscrire",
             "forgot-password": "Mot de passe oublié ?",
+            "or": "ou",
 
             "auth": {
                 "failed": "Identifiants incorrects",

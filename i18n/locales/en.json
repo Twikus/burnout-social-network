@@ -12,7 +12,13 @@
             "password": "Password",
             "submit": "Log in",
             "register": "Sign up",
-            "forgot-password": "Forgot password?"
+            "forgot-password": "Forgot password?",
+            "or": "or",
+
+            "auth": {
+                "failed": "These credentials do not match our records.",
+                "throttle": "Too many login attempts. Please try again in :seconds seconds."
+            }
         },
 
         "footer": {

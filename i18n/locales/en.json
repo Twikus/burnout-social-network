@@ -1,0 +1,10 @@
+{
+    "auth": {
+        "login": "Log in",
+        "register": "Join us"
+    },
+    "home": {
+        "title": "The Social Network for Motorcycle Enthusiasts",
+        "description": "Simple: just purring engines, burning rubber and motorcycle."
+    }
+}

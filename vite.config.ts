@@ -3,6 +3,10 @@ import laravel from 'laravel-vite-plugin';
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+
 
 export default defineConfig({
     plugins: [
@@ -19,6 +23,11 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
+        }),
+        VueI18nPlugin({
+          /* options */
+          // locale messages resource pre-compile option
+          include: resolve(dirname(fileURLToPath(import.meta.url)), './i18n/locales/**'),
         }),
     ],
     resolve: {

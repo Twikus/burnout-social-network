@@ -5,6 +5,7 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 import { Ref, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import logo from '../../img/logo.png';
 
 const { t, locale } = useI18n();
 
@@ -63,36 +64,10 @@ const submit = () => {
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 	</Head>
     <div class="flex flex-col min-h-screen bg-[#FDFDFC] text-[#1b1b18] dark:bg-[#0a0a0a]">
-		<!-- <header class="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
-			<nav class="flex items-center justify-end gap-4">
-				<Link
-					v-if="$page.props.auth.user"
-					:href="route('home')"
-					class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-				>
-					Accueil
-				</Link>
-				<template v-else>
-					<Link
-						:href="route('login')"
-						class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-					>
-						{{ t('auth.login') }}
-					</Link>
-					<Link
-						:href="route('register')"
-						class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-					>
-						{{ t('auth.register') }}
-					</Link>
-				</template>
-			</nav>
-		</header> -->
-
         <main class="h-full flex-grow w-full grid grid-cols-1 md:w-1/2 md:mx-auto">
             <div class="h-full flex flex-col items-center justify-center">
                 <div class="h-max w-full">
-                    <img src="../../img/logo.png" alt="logo" class="w-32 mx-auto mt-10" />
+                    <img :src="logo" alt="logo" class="w-32 mx-auto mt-10" />
                     <!-- login form -->
                     <form
                         @submit.prevent="submit"

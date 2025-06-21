@@ -21,7 +21,7 @@ class GoogleController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
         } catch (\Exception $e) {
-            return redirect()->route('home')->withErrors(['google' => 'auth.google.failed']);
+            return redirect()->route('lp')->withErrors(['google' => __('auth.google.failed')]);
         }
 
         // Check if the user already exists in app by email or Google ID

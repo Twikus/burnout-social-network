@@ -1,7 +1,8 @@
 {
     "auth": {
         "login": "Log in",
-        "register": "Join us"
+        "register": "Join us",
+        "create-account": "Create an account"
     },
     "home": {
         "title": "The Social Network for Motorcycle Enthusiasts",
@@ -20,6 +21,9 @@
             "auth": {
                 "failed": "These credentials do not match our records.",
                 "throttle": "Too many login attempts. Please try again in :seconds seconds."
+            },
+            "validation": {
+                "required": "Credentials required"
             }
         },
 
@@ -28,5 +32,15 @@
             "terms": "Terms",
             "privacy": "Privacy"
         }
+    },
+    "register": {
+        "form": {
+            "name": "Name",
+            "email": "Email address",
+            "password": "Password",
+            "password_confirmation": "Confirm password",
+            "submit": "Create account"
+        },
+        "already-account": "Already have an account?"
     }
 }

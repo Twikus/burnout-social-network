@@ -43,5 +43,17 @@
             "submit": "Créer mon compte"
         },
         "already-account": "Vous avez déjà un compte ?"
+    },
+
+    "forgot-password": {
+        "title": "Mot de passe oublié ?",
+        "email": "Email du compte",
+        "send-link": "Envoyer un lien de reinitialisation",
+        "go-back": "Ou, revenir à",
+        "reset-link-send": "Un lien de reinitialisation à été envoyé si l'email appartient à un compte",
+
+        "validation": {
+            "required": "Email requis"
+        }
     }
 }

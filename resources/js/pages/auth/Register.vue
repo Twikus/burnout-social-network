@@ -3,7 +3,7 @@ import FormInput from '@/components/burnout-ui/input/FormInput.vue';
 import InputError from '@/components/InputError.vue';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
-import { Head, useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 import { useI18n } from 'vue-i18n';
 import logo from '../../../img/logo.png';
@@ -26,7 +26,6 @@ const submit = () => {
 
 <template>
     <div class="flex min-h-svh flex-col items-center justify-center">
-        <Head :title="t('auth.register') + ' - BURNOUT'" />
 
         <div class="mb-12 flex flex-col items-center gap-2">
             <img :src="logo" alt="BURNOUT Logo" class="h-32 w-32" />

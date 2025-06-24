@@ -7,6 +7,7 @@ const props = defineProps<{
     label: string;
     type?: string;
     required?: boolean;
+    autocomplete?: string;
 
     modelValue?: string;
     class?: HTMLAttributes['class'];
@@ -63,7 +64,7 @@ const switchPasswordDisplay = () => {
             :type="props.type || 'text'"
             :required="props.required || false"
             autofocus
-            :autocomplete="props.type"
+            :autocomplete="props.autocomplete"
             v-model="modelValue"
             @focus="handleFocus"
             @blur="handleBlur"

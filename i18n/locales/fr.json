@@ -1,7 +1,8 @@
 {
     "auth": {
         "login": "Se connecter",
-        "register": "Nous rejoindre"
+        "register": "Nous rejoindre",
+        "create-account": "Créer un compte"
     },
     "home": {
         "title": "Le réseau des passionnés de moto 🔥",
@@ -20,6 +21,10 @@
             "auth": {
                 "failed": "Identifiants incorrects",
                 "throttle": "Trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes."
+            },
+
+            "validation": {
+                "required": "Identifiants requis"
             }
         },
 
@@ -28,5 +33,15 @@
             "terms": "Conditions d'utilisation",
             "privacy": "Politique de confidentialité"
         }
+    },
+    "register": {
+        "form": {
+            "name": "Prénom Nom",
+            "email": "Email",
+            "password": "Mot de passe",
+            "password_confirmation": "Confirmer le mot de passe",
+            "submit": "Créer mon compte"
+        },
+        "already-account": "Vous avez déjà un compte ?"
     }
 }

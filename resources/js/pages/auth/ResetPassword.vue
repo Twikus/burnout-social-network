@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import AuthLayout from '@/layouts/AuthLayout.vue';
-import { Head, useForm } from '@inertiajs/vue3';
+import FormInput from '@/components/burnout-ui/input/FormInput.vue';
+import { useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
+import { useI18n } from 'vue-i18n';
+import logo from '../../../img/logo.png';
 
 interface Props {
     token: string;
@@ -13,6 +13,8 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const { t } = useI18n();
 
 const form = useForm({
     token: props.token,
@@ -31,51 +33,43 @@ const submit = () => {
 </script>
 
 <template>
-    <AuthLayout title="Reset password" description="Please enter your new password below">
-        <Head title="Reset password" />
+    <div class="flex min-h-svh flex-col items-center justify-center">
 
-        <form @submit.prevent="submit">
+        <div class="mb-12 flex flex-col items-center gap-2">
+            <img :src="logo" alt="BURNOUT Logo" class="h-32 w-32" />
+            <h1 class="text-2xl font-bold">{{ t('forgot-password.reset-title') }}</h1>
+        </div>
+
+        <form @submit.prevent="submit" class="flex flex-col gap-6 w-full max-w-80 px-10">
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <Label for="email">Email</Label>
-                    <Input id="email" type="email" name="email" autocomplete="email" v-model="form.email" class="mt-1 block w-full" readonly />
-                    <InputError :message="form.errors.email" class="mt-2" />
+                    <FormInput id="email" :label="t('register.form.email')" type="email" v-model="form.email" :readonly="true"/>
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        name="password"
-                        autocomplete="new-password"
-                        v-model="form.password"
-                        class="mt-1 block w-full"
-                        autofocus
-                        placeholder="Password"
-                    />
-                    <InputError :message="form.errors.password" />
+                    <FormInput id="password" :label="t('register.form.password')" type="password" v-model="form.password" :required="false" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password_confirmation"> Confirm Password </Label>
-                    <Input
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        autocomplete="new-password"
+                    <FormInput
                         v-model="form.password_confirmation"
-                        class="mt-1 block w-full"
-                        placeholder="Confirm password"
+                        id="password_confirmation"
+                        :label="t('register.form.password_confirmation')"
+                        type="password"
+                        :required="false"
                     />
-                    <InputError :message="form.errors.password_confirmation" />
+                    <div class="h-10">
+                        <InputError :message="form.errors.email ? t('forgot-password.email-check.' + form.errors.email) : ''" />
+                        <InputError :message="form.errors.password ? t('forgot-password.password-check.' + form.errors.password) : ''" />
+                        <InputError :message="form.errors.password_confirmation ? t('forgot-password.password-check.' + form.errors.password_confirmation) : ''" />
+                    </div>
                 </div>
 
-                <Button type="submit" class="mt-4 w-full" :disabled="form.processing">
+                <Button type="submit" class="mt-2 w-full" tabindex="5" :disabled="form.processing">
                     <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
-                    Reset password
+                    {{ t('forgot-password.submit') }}
                 </Button>
             </div>
         </form>
-    </AuthLayout>
+    </div>
 </template>

@@ -42,7 +42,7 @@ const submit = () => {
                         v-model="form.email"
                         autofocus
                     />
-                    <InputError :message="t(form.errors.email ? t('forgot-password.' + form.errors.email) : '')" />
+                    <InputError :message="t(form.errors.email ? t('forgot-password.email-check.' + form.errors.email) : '')" />
                     <div v-if="status" class="mb-4 w-[250px] text-center text-sm font-medium text-green-600">
                         {{ t('forgot-password.' + status) }}
                     </div>

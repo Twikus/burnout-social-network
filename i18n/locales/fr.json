@@ -47,13 +47,29 @@
 
     "forgot-password": {
         "title": "Mot de passe oublié ?",
+        "reset-title": "Mettre à jour le mot de passe ",
         "email": "Email du compte",
         "send-link": "Envoyer un lien de reinitialisation",
         "go-back": "Ou, revenir à",
         "reset-link-send": "Un lien de reinitialisation à été envoyé si l'email appartient à un compte",
+        "submit": "Mettre à jour",
 
-        "validation": {
-            "required": "Email requis"
+        "email-check": {
+            "validation": {
+                "required": "Email requis"
+            },
+            "passwords":  {
+                "token": "Le lien de réinitialisation du mot de passe est invalide ou a expiré."
+            }
+        },
+        "password-check": {
+            "validation": {
+                "required": "Mot de passe requis",
+                "confirmed": "La confirmation du mot de passe ne correspond pas",
+                "min": {
+                    "string": "Le mot de passe doit comporter au moins 8 caractères"
+                }
+            }
         }
     }
 }

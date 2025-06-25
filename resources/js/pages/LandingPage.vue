@@ -12,6 +12,8 @@ const { t, locale } = useI18n();
 
 const currentLocale: Ref<string> = ref(locale.value);
 
+console.log('Current locale:', currentLocale.value);
+
 const form = useForm({
     email: '',
     password: '',

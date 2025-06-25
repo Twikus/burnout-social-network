@@ -1,7 +1,8 @@
 {
     "auth": {
         "login": "Se connecter",
-        "register": "Nous rejoindre"
+        "register": "Nous rejoindre",
+        "create-account": "Créer un compte"
     },
     "home": {
         "title": "Le réseau des passionnés de moto 🔥",
@@ -20,6 +21,10 @@
             "auth": {
                 "failed": "Identifiants incorrects",
                 "throttle": "Trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes."
+            },
+
+            "validation": {
+                "required": "Identifiants requis"
             }
         },
 
@@ -27,6 +32,44 @@
             "all-rights": "Tous droits réservés",
             "terms": "Conditions d'utilisation",
             "privacy": "Politique de confidentialité"
+        }
+    },
+    "register": {
+        "form": {
+            "name": "Prénom Nom",
+            "email": "Email",
+            "password": "Mot de passe",
+            "password_confirmation": "Confirmer le mot de passe",
+            "submit": "Créer mon compte"
+        },
+        "already-account": "Vous avez déjà un compte ?"
+    },
+
+    "forgot-password": {
+        "title": "Mot de passe oublié ?",
+        "reset-title": "Mettre à jour le mot de passe ",
+        "email": "Email du compte",
+        "send-link": "Envoyer un lien de reinitialisation",
+        "go-back": "Ou, revenir à",
+        "reset-link-send": "Un lien de reinitialisation à été envoyé si l'email appartient à un compte",
+        "submit": "Mettre à jour",
+
+        "email-check": {
+            "validation": {
+                "required": "Email requis"
+            },
+            "passwords":  {
+                "token": "Le lien de réinitialisation du mot de passe est invalide ou a expiré."
+            }
+        },
+        "password-check": {
+            "validation": {
+                "required": "Mot de passe requis",
+                "confirmed": "La confirmation du mot de passe ne correspond pas",
+                "min": {
+                    "string": "Le mot de passe doit comporter au moins 8 caractères"
+                }
+            }
         }
     }
 }

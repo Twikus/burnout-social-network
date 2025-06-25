@@ -37,8 +37,7 @@ Whether you're into café racers, sport bikes, customs, or off-road trails, **Bu
 - 🧑‍💻 Two-factor authentication (2FA)
 - 💬 Real-time instant messaging (Pusher)
 - 🏍️ Community feed & motorcycle showcases
-- 📱 Responsive UI with Tailwind CSS
-- ⚙️ Laravel MVC structure
+- 📱 Available to WebApp
 
 ---
 
@@ -47,7 +46,7 @@ Whether you're into café racers, sport bikes, customs, or off-road trails, **Bu
 | Layer            | Technology              |
 |------------------|-------------------------|
 | Framework        | Laravel                 |
-| Frontend         | Livewire + Tailwind CSS |
+| Frontend         | Inertia + Tailwind CSS  |
 | Real-time Engine | Pusher (WebSockets)     |
 | Database         | MySQL.                  |
 | Package Managers | Composer, NPM           |

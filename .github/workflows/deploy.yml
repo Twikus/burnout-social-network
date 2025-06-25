@@ -1,0 +1,84 @@
+name: Deploy Burnout Social Network Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v0.1.9
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+
+            BASE_DIR="$HOME/domains/axelduquelzar.fr/public_html"
+            APP_NAME="burnout"
+            APP_DIR="$BASE_DIR/$APP_NAME"
+            BACKUP_DIR="${APP_DIR}_backup_$(date +'%Y%m%d%H%M%S')"
+            NODE_PATH="$HOME/nodejs/bin"
+
+            echo "📂 Aller dans le dossier parent : $BASE_DIR"
+            cd "$BASE_DIR"
+
+            if [ -d "$APP_NAME" ]; then
+              echo "🔧 Mise en maintenance..."
+              php "$APP_NAME/artisan" down || true
+
+              echo "💾 Sauvegarde du fichier .env"
+              cp "$APP_NAME/.env" "$BASE_DIR/.env.backup" || true
+
+              echo "📦 Backup de l'ancienne version..."
+              mv "$APP_NAME" "$BACKUP_DIR"
+            fi
+
+            echo "📁 Création du dossier d'application..."
+            mkdir -p "$APP_NAME"
+
+            echo "📤 Clonage du dépôt Git..."
+            git clone --depth=1 git@github.com:Twikus/burnout-social-network.git "$APP_NAME"
+
+            cd "$APP_NAME"
+
+            echo "📄 Restauration du fichier .env"
+            cp "$BASE_DIR/.env.backup" .env || true
+
+            echo "🔧 Installation des dépendances Composer..."
+            composer install --no-dev --optimize-autoloader
+
+            echo "🔧 Installation des dépendances Node.js..."
+            export PATH="$NODE_PATH:$PATH"
+            npm install
+            npm run build
+
+            echo "⚙️ Exécution des migrations Laravel..."
+            php artisan migrate --force
+
+            echo "⚡ Mise en cache Laravel..."
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            echo "✅ Fin de maintenance..."
+            php artisan up
+
+            echo "🧹 Suppression du backup précédent..."
+            rm -rf "$BACKUP_DIR"
+
+            echo "✔️ Déploiement terminé avec succès !"

@@ -42,5 +42,17 @@
             "submit": "Create account"
         },
         "already-account": "Already have an account?"
+    },
+
+    "forgot-password": {
+        "title": "Forgot password ?",
+        "email": "Account email",
+        "send-link": "Send reset link",
+        "go-back": "Or, return to",
+        "reset-link-send": "Reset link was send if account exist",
+
+        "validation": {
+            "required": "Email required"
+        }
     }
 }

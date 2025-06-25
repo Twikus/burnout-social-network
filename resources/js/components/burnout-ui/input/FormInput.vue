@@ -7,6 +7,8 @@ const props = defineProps<{
     label: string;
     type?: string;
     required?: boolean;
+    autocomplete?: string;
+    readonly?: boolean;
 
     modelValue?: string;
     class?: HTMLAttributes['class'];
@@ -30,7 +32,7 @@ const handleFocus = () => {
 
 // Functions to handle blur events
 const handleBlur = () => {
-    isInputFocused.value = (modelValue.value ?? '').length > 0;
+    isInputFocused.value = (modelValue.value ?? props.modelValue ?? '').length > 0;
 };
 
 const switchPasswordDisplay = () => {
@@ -63,7 +65,8 @@ const switchPasswordDisplay = () => {
             :type="props.type || 'text'"
             :required="props.required || false"
             autofocus
-            :autocomplete="props.type"
+            :autocomplete="props.autocomplete"
+            :readonly="props.readonly || false"
             v-model="modelValue"
             @focus="handleFocus"
             @blur="handleBlur"

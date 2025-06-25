@@ -36,11 +36,21 @@ jobs:
 
       - name: Create deployment archive
         run: |
-          tar -czf deploy.tar.gz \
-            --exclude=node_modules \
-            --exclude=.git \
-            --exclude=.github \
-            .
+          # Créer un dossier temporaire pour les fichiers à déployer
+          mkdir -p /tmp/deploy_burnout
+          
+          # Copier tous les fichiers nécessaires (en excluant ceux non désirés)
+          rsync -a --exclude={'.git','.github','node_modules'} ./ /tmp/deploy_burnout/
+          
+          # Créer les dossiers de stockage nécessaires
+          mkdir -p /tmp/deploy_burnout/storage/{logs,framework/{cache,sessions,views}}
+          
+          # Créer l'archive à partir du dossier temporaire
+          cd /tmp && tar -czf deploy.tar.gz deploy_burnout
+          mv /tmp/deploy.tar.gz $GITHUB_WORKSPACE/
+          
+          # Nettoyer
+          rm -rf /tmp/deploy_burnout
 
       - name: Setup SSH key
         uses: webfactory/ssh-agent@v0.8.0
@@ -90,7 +100,7 @@ jobs:
             mkdir -p "$APP_NAME"
             
             echo "📦 Décompression des fichiers..."
-            tar -xzf /tmp/deploy.tar.gz -C "$APP_NAME"
+            tar -xzf /tmp/deploy.tar.gz -C "$APP_NAME" --strip-components=1
             rm /tmp/deploy.tar.gz
             
             cd "$APP_NAME"

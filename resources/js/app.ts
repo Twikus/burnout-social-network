@@ -13,7 +13,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faEye, faEyeSlash);
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'BURNOUT';
 
 createInertiaApp({
     title: (title) => (title ? `${title}` : appName),

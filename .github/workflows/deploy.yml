@@ -38,17 +38,17 @@ jobs:
         run: |
           # Créer un dossier temporaire pour les fichiers à déployer
           mkdir -p /tmp/deploy_burnout
-          
+
           # Copier tous les fichiers nécessaires (en excluant ceux non désirés)
           rsync -a --exclude={'.git','.github','node_modules'} ./ /tmp/deploy_burnout/
-          
+
           # Créer les dossiers de stockage nécessaires
           mkdir -p /tmp/deploy_burnout/storage/{logs,framework/{cache,sessions,views}}
-          
+
           # Créer l'archive à partir du dossier temporaire
           cd /tmp && tar -czf deploy.tar.gz deploy_burnout
           mv /tmp/deploy.tar.gz $GITHUB_WORKSPACE/
-          
+
           # Nettoyer
           rm -rf /tmp/deploy_burnout
 
@@ -81,45 +81,45 @@ jobs:
             APP_NAME="burnout"
             APP_DIR="$BASE_DIR/$APP_NAME"
             BACKUP_DIR="${APP_DIR}_backup_$(date +'%Y%m%d%H%M%S')"
-            
+
             echo "📂 Aller dans le dossier parent : $BASE_DIR"
             cd "$BASE_DIR"
-            
+
             if [ -d "$APP_NAME" ]; then
               echo "🔧 Mise en maintenance..."
               php "$APP_NAME/artisan" down || true
-              
+
               echo "💾 Sauvegarde du fichier .env"
-              cp "$APP_NAME/.env" "$BASE_DIR/.env.backup" || true
-              
+              cp "$APP_NAME/.env" "$BASE_DIR/.env.backup.burnout" || true
+
               echo "📦 Backup de l'ancienne version..."
               mv "$APP_NAME" "$BACKUP_DIR"
             fi
-            
+
             echo "📁 Création du dossier d'application..."
             mkdir -p "$APP_NAME"
-            
+
             echo "📦 Décompression des fichiers..."
             tar -xzf /tmp/deploy.tar.gz -C "$APP_NAME" --strip-components=1
             rm /tmp/deploy.tar.gz
-            
+
             cd "$APP_NAME"
-            
+
             echo "📄 Restauration du fichier .env"
-            cp "$BASE_DIR/.env.backup" .env || true
-            
+            cp "$BASE_DIR/.env.backup.burnout" .env || true
+
             echo "⚙️ Exécution des migrations Laravel..."
             php artisan migrate --force
-            
+
             echo "⚡ Mise en cache Laravel..."
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
-            
+
             echo "✅ Fin de maintenance..."
             php artisan up
-            
+
             echo "🧹 Suppression du backup précédent..."
             rm -rf "$BACKUP_DIR"
-            
+
             echo "✔️ Déploiement terminé avec succès !"

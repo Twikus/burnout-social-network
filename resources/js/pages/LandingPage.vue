@@ -12,8 +12,6 @@ const { t, locale } = useI18n();
 
 const currentLocale: Ref<string> = ref(locale.value);
 
-console.log('Current locale:', currentLocale.value);
-
 const form = useForm({
     email: '',
     password: '',
@@ -39,7 +37,7 @@ const changeLocale = (newLocale: string) => {
 
 // Submit the form for login
 const submit = () => {
-    form.post(route('login'), {
+    form.post('/login', {
         onFinish: () => form.reset('password'),
     });
 };

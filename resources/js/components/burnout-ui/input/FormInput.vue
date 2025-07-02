@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
-import { Ref, ref, type HTMLAttributes } from 'vue';
+import { onMounted, Ref, ref, type HTMLAttributes } from 'vue';
 
 const props = defineProps<{
     id: string;
@@ -46,6 +46,10 @@ const switchPasswordDisplay = () => {
         input.type = 'password';
     }
 };
+
+onMounted(() => {
+    handleBlur();
+});
 </script>
 
 <template>

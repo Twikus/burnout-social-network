@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,10 @@ class User extends Authenticatable
         'password',
         'google_id',
         'email_verified_at',
+        'avatar_url',
+        'bio',
+        'is_public',
+        'last_active_at',
     ];
 
     /**
@@ -46,5 +51,24 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the full URL for the user's avatar.
+     */
+    public function getAvatarUrlAttribute(): ?string
+    {
+        // Si l'attribut avatar_url existe en base
+        if (!$this->attributes['avatar_url']) {
+            return null;
+        }
+
+        // Si c'est déjà une URL complète, la retourner
+        if (str_starts_with($this->attributes['avatar_url'], 'http')) {
+            return $this->attributes['avatar_url'];
+        }
+
+        // Sinon, construire l'URL pour les fichiers stockés localement
+        return Storage::disk('public')->url($this->attributes['avatar_url']);
     }
 }

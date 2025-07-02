@@ -35,17 +35,17 @@ const submit = () => {
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <FormInput v-model="form.name" id="name" :label="t('register.form.name')" :required="true" />
+                    <FormInput v-model="form.name" id="name" :label="t('register.form.name')" :required="true" @update:model-value="form.name = $event" />
                     <InputError :message="form.errors.name" />
                 </div>
 
                 <div class="grid gap-2">
-                    <FormInput v-model="form.email" id="email" :label="t('register.form.email')" type="email" :required="true" />
+                    <FormInput v-model="form.email" id="email" :label="t('register.form.email')" type="email" :required="true" @update:model-value="form.email = $event" />
                     <InputError :message="form.errors.email" />
                 </div>
 
                 <div class="grid gap-2">
-                    <FormInput v-model="form.password" id="password" :label="t('register.form.password')" type="password" :required="true" />
+                    <FormInput v-model="form.password" id="password" :label="t('register.form.password')" type="password" :required="true" @update:model-value="form.password = $event" />
                     <InputError :message="form.errors.password" />
                 </div>
 
@@ -56,6 +56,7 @@ const submit = () => {
                         :label="t('register.form.password_confirmation')"
                         type="password"
                         :required="true"
+                        @update:model-value="form.password_confirmation = $event"
                     />
                     <InputError :message="form.errors.password_confirmation" />
                 </div>

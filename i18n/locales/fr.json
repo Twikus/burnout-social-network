@@ -44,7 +44,6 @@
         },
         "already-account": "Vous avez déjà un compte ?"
     },
-
     "forgot-password": {
         "title": "Mot de passe oublié ?",
         "reset-title": "Mettre à jour le mot de passe ",
@@ -71,5 +70,16 @@
                 }
             }
         }
+    },
+    "profile": {
+        "title": "Mon profil",
+        "description": "Gérez votre compte, modifiez vos informations personnelles et vos préférences.",
+        "name": "Nom Prénom",
+        "email": "Email",
+        "email-unverified": "Email non vérifié",
+        "click-resend-verification": "Cliquez pour renvoyer le lien de vérification",
+        "profile.verification-link-sent": "Un lien de vérification a été envoyé à votre adresse e-mail.",
+        "save": "Enregistrer les modifications",
+        "saved": "Profil mis à jour avec succès"
     }
 }

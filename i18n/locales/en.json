@@ -45,14 +45,30 @@
     },
 
     "forgot-password": {
-        "title": "Forgot password ?",
+        "title": "Forgot your password?",
+        "reset-title": "Update your password",
         "email": "Account email",
         "send-link": "Send reset link",
         "go-back": "Or, return to",
-        "reset-link-send": "Reset link was send if account exist",
+        "reset-link-send": "Reset link was sent if account exists",
+        "submit": "Update",
 
-        "validation": {
-            "required": "Email required"
+        "email-check": {
+            "validation": {
+                "required": "Email required"
+            },
+            "passwords":  {
+                "token": "Reset password link is invalid or has expired."
+            }
+        },
+        "password-check": {
+            "validation": {
+                "required": "Password required",
+                "confirmed": "Password confirmation does not match",
+                "min": {
+                    "string": "Password must be at least 8 characters"
+                }
+            }
         }
     }
 }

@@ -13,15 +13,14 @@ class UpdateUserService
 
         $oldAvatarPath = $user->getRawOriginal('avatar_url');
 
-        // Supprimer l'ancien avatar s'il existe
+        // If the user has an old avatar, delete it from storage
         if ($oldAvatarPath && Storage::disk('public')->exists($oldAvatarPath)) {
             Storage::disk('public')->delete($oldAvatarPath);
         }
 
-        // Stocker le nouvel avatar
+        // Store the new avatar file in the 'avatars' directory within the public disk
         $avatarPath = $request->file('avatar_url')->store('avatars', 'public');
 
-        // Mettre à jour l'utilisateur avec le nouveau chemin de l'avatar (storage/app/public/avatars)
         $user->update([
             'avatar_url' => $avatarPath,
         ]);

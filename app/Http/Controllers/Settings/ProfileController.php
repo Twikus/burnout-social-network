@@ -86,6 +86,13 @@ class ProfileController extends Controller
 
         Auth::logout();
 
+        $oldAvatarPath = $user->getRawOriginal('avatar_url');
+
+        // If the user has an old avatar, delete it from storage
+        if ($oldAvatarPath && Storage::disk('public')->exists($oldAvatarPath)) {
+            Storage::disk('public')->delete($oldAvatarPath);
+        }
+
         $user->delete();
 
         $request->session()->invalidate();

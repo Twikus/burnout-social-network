@@ -80,6 +80,19 @@
         "click-resend-verification": "Cliquez pour renvoyer le lien de vérification",
         "profile.verification-link-sent": "Un lien de vérification a été envoyé à votre adresse e-mail.",
         "save": "Enregistrer les modifications",
-        "saved": "Profil mis à jour avec succès"
+        "saved": "Profil mis à jour avec succès",
+
+        "delete-account": {
+            "title": "Supprimer mon compte",
+            "description": "Supprimer mon compte et toutes les données me concernant.",
+            "warning": "Attention",
+            "before-delete": "Cette action est irreversible, votre compte ne pourra-t-être réactivé.",
+            "confirm": {
+                "title": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+                "description": "Une fois votre compte supprimé, toutes vos données seront perdu. Vous devez entrez votre mot de passe pour supprimer votre compte",
+                "password": "Mot de passe",
+                "cancel": "Annuler"
+            }
+        }
     }
 }

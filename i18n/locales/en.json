@@ -70,5 +70,30 @@
                 }
             }
         }
+    },
+
+    "profile": {
+        "title": "My account",
+        "description": "Manage your account settings and profile information.",
+        "name": "Firstname Lastname",
+        "email": "Email",
+        "email-unverified": "Email not verified",
+        "click-resend-verification": "Click to resend verification link",
+        "profile.verification-link-sent": "A verification link has been sent to your email address.",
+        "save": "Save changes",
+        "saved": "Profile updated successfully",
+
+        "delete-account": {
+            "title": "Delete my account",
+            "description": "Delete my account and all data related to me.",
+            "warning": "Warning",
+            "before-delete": "This action is irreversible, your account cannot be reactivated.",
+            "confirm": {
+                "title": "Are you sure you want to delete your account?",
+                "description": "Once your account is deleted, all your data will be lost. You must enter your password to delete your account.",
+                "password": "Password",
+                "cancel": "Cancel"
+            }
+        }
     }
 }

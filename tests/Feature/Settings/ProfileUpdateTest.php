@@ -76,7 +76,9 @@ class ProfileUpdateTest extends TestCase
             ->assertRedirect('/');
 
         $this->assertGuest();
-        $this->assertNull($user->fresh());
+        $this->assertSoftDeleted($user);
+        $this->assertNotNull($user->fresh()->deleted_at);
+        $this->assertNull(User::find($user->id));
     }
 
     public function test_correct_password_must_be_provided_to_delete_account()
@@ -94,6 +96,7 @@ class ProfileUpdateTest extends TestCase
             ->assertSessionHasErrors('password')
             ->assertRedirect('/settings/profile');
 
+        $this->assertNotSoftDeleted($user);
         $this->assertNotNull($user->fresh());
     }
 }

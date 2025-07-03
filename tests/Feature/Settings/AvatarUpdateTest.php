@@ -110,4 +110,41 @@ class AvatarUpdateTest extends TestCase
 
         $response->assertSessionHasErrors();
     }
+
+    public function test_user_avatar_is_deleted_when_account_is_deleted()
+    {
+        $user = User::factory()->create();
+
+        Storage::fake('avatars');
+
+        $file = UploadedFile::fake()->image('avatar.jpg');
+
+        $response = $this
+            ->actingAs($user)
+            ->post('/settings/profile/avatar', [
+                'avatar_url' => $file
+            ]);
+
+        $response->assertSessionHasNoErrors();
+
+        $uploadedPath = $user->getRawOriginal('avatar_url');
+        if ($uploadedPath) {
+            $this->uploadedFiles[] = $uploadedPath;
+        }
+
+        $fakeFile = Storage::disk('avatars')->files('avatars');
+        $this->assertNotNull($fakeFile);
+
+        // Supprimer le compte
+        $this->actingAs($user)
+            ->delete('/settings/profile', [
+                'password' => 'password',
+            ]);
+
+        $this->assertGuest();
+        $this->assertSoftDeleted($user);
+
+        $fakeFile = Storage::disk('avatars')->files('avatars');
+        $this->assertEmpty($fakeFile);
+    }
 }

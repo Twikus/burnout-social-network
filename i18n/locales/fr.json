@@ -44,7 +44,6 @@
         },
         "already-account": "Vous avez déjà un compte ?"
     },
-
     "forgot-password": {
         "title": "Mot de passe oublié ?",
         "reset-title": "Mettre à jour le mot de passe ",
@@ -69,6 +68,30 @@
                 "min": {
                     "string": "Le mot de passe doit comporter au moins 8 caractères"
                 }
+            }
+        }
+    },
+    "profile": {
+        "title": "Mon profil",
+        "description": "Gérez votre compte, modifiez vos informations personnelles et vos préférences.",
+        "name": "Nom Prénom",
+        "email": "Email",
+        "email-unverified": "Email non vérifié",
+        "click-resend-verification": "Cliquez pour renvoyer le lien de vérification",
+        "profile.verification-link-sent": "Un lien de vérification a été envoyé à votre adresse e-mail.",
+        "save": "Enregistrer les modifications",
+        "saved": "Profil mis à jour avec succès",
+
+        "delete-account": {
+            "title": "Supprimer mon compte",
+            "description": "Supprimer mon compte et toutes les données me concernant.",
+            "warning": "Attention",
+            "before-delete": "Cette action est irreversible, votre compte ne pourra-t-être réactivé.",
+            "confirm": {
+                "title": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+                "description": "Une fois votre compte supprimé, toutes vos données seront perdu. Vous devez entrez votre mot de passe pour supprimer votre compte",
+                "password": "Mot de passe",
+                "cancel": "Annuler"
             }
         }
     }

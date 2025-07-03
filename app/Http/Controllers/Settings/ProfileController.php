@@ -4,15 +4,26 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\ProfileUpdateRequest;
+use App\Http\Requests\Settings\StoreAvatarRequest;
+use App\Services\Settings\UpdateUserService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ProfileController extends Controller
 {
+
+    private $updateUserService;
+
+    public function __construct(UpdateUserService $updateUserService)
+    {
+        $this->updateUserService = $updateUserService;
+    }
+
     /**
      * Show the user's profile settings page.
      */
@@ -20,7 +31,7 @@ class ProfileController extends Controller
     {
         return Inertia::render('settings/Profile', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => $request->session()->get('status'),
+            'status' => $request->session()->get('status')
         ]);
     }
 
@@ -37,7 +48,29 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return to_route('profile.edit');
+        return to_route('profile.edit')->with([
+            'success' => 'Profil mis à jour avec succès',
+            'user' => $request->user()
+        ]);
+    }
+
+    /**
+     * Update the user's avatar.
+     */
+    public function updateAvatar(StoreAvatarRequest $request): RedirectResponse
+    {
+        if (!$request->validated()) {
+            return redirect('/settings/profile')->withErrors([
+                'avatar' => 'Erreur lors de la validation de l\'avatar. Veuillez réessayer.'
+            ]);
+        }
+
+        $userUpdated = $this->updateUserService->updateAvatar($request);
+
+        return redirect()->route('profile.edit')->with([
+            'success' => 'Avatar mis à jour avec succès',
+            'user' => $userUpdated
+        ]);
     }
 
     /**
@@ -52,6 +85,13 @@ class ProfileController extends Controller
         $user = $request->user();
 
         Auth::logout();
+
+        $oldAvatarPath = $user->getRawOriginal('avatar_url');
+
+        // If the user has an old avatar, delete it from storage
+        if ($oldAvatarPath && Storage::disk('public')->exists($oldAvatarPath)) {
+            Storage::disk('public')->delete($oldAvatarPath);
+        }
 
         $user->delete();
 
